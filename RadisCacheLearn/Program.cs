@@ -12,11 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add connection string
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add redis caching
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetConnectionString("Redis");
@@ -24,7 +22,6 @@ builder.Services.AddStackExchangeRedisCache(options =>
 
 builder.Services.AddScoped<IGameRepository,GameRepository>();
 builder.Services.AddScoped<IGameService, GameService>();
-
 
 var app = builder.Build();
 
