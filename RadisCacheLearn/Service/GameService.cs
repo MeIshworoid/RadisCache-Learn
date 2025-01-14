@@ -20,7 +20,6 @@ namespace RadisCacheLearn.Service
         public async Task<List<Game>> GetAllGamesAsync()
         {
             // first check key has cached games or not
-
             string? cachedGames = await _distributedCacheService.GetStringAsync("games");
             if (!string.IsNullOrWhiteSpace(cachedGames))
             {
